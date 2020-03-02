@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    user: user
+    entrypoint: php
+    working_dir: /home/user/app
+    volumes:
+      - .:/home/user/app
+
+  composer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    user: user
+    entrypoint: composer
+    working_dir: /home/php/app
+    volumes:
+      - .:/home/php/app
+
+  artisan:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    user: user
+    entrypoint: php artisan
+    working_dir: /home/php/app
+    volumes:
+      - .:/home/php/app
