@@ -18,7 +18,7 @@ install:
 
 # Start the web server at http://localhost
 start:
-	docker-compose up --detach fpm nginx postgresql
+	docker-compose up --detach fpm nginx postgresql adminer
 
 # Remove the Docker artifacts
 stop:
@@ -36,4 +36,4 @@ mrproper:
 
 # Run the laravel migrations
 migrations:
-	docker-compose run --rm artisan migrate
+	docker-compose run --rm artisan migrate:fresh --seed
