@@ -38,7 +38,7 @@ class ReviewController extends Controller
      * @param  \App\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function show(ReviewRequest $review)
+    public function show(Review $review)
     {
         //
     }
