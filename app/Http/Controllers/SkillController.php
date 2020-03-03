@@ -6,6 +6,8 @@ namespace App\Http\Controllers;
 
 use App\Skill;
 use Illuminate\Http\Request;
+use App\Http\Requests\SkillRequest;
+use App\Http\Requests\SkillDestroyRequest;
 
 class SkillController extends Controller
 {
@@ -16,7 +18,7 @@ class SkillController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json("TODO: SkillController@index", 200);
     }
 
     /**
@@ -25,9 +27,9 @@ class SkillController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SkillRequest $request)
     {
-        //
+        return response()->json("TODO: SkillRequest@store", 200);
     }
 
     /**
@@ -38,7 +40,7 @@ class SkillController extends Controller
      */
     public function show(Skill $skill)
     {
-        //
+        return response()->json("TODO: SkillRequest@show", 200);
     }
 
     /**
@@ -48,9 +50,9 @@ class SkillController extends Controller
      * @param  \App\Skill  $skill
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Skill $skill)
+    public function update(SkillRequest $request, Skill $skill)
     {
-        //
+        return response()->json("TODO: SkillRequest@update", 200);
     }
 
     /**
@@ -59,8 +61,8 @@ class SkillController extends Controller
      * @param  \App\Skill  $skill
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Skill $skill)
+    public function destroy(SkillDestroyRequest $request, Skill $skill)
     {
-        //
+        return response()->json("TODO: SkillRequest@destroy", 200);
     }
 }

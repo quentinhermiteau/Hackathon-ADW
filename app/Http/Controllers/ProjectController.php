@@ -6,6 +6,8 @@ namespace App\Http\Controllers;
 
 use App\Project;
 use Illuminate\Http\Request;
+use App\Http\Requests\ProjectRequest;
+use App\Http\Requests\ProjectDestroyRequest;
 
 class ProjectController extends Controller
 {
@@ -16,7 +18,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        echo('toto');
+        return response()->json("ProjectController@index", 200);
     }
 
     /**
@@ -25,9 +27,9 @@ class ProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProjectRequest $request)
     {
-        //
+        return response()->json("TODO: ProjectController@store", 200);
     }
 
     /**
@@ -38,7 +40,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        //
+        return response()->json("TODO: ProjectController@show", 200);
     }
 
     /**
@@ -48,9 +50,9 @@ class ProjectController extends Controller
      * @param  \App\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Project $project)
+    public function update(ProjectRequest $request, Project $project)
     {
-        //
+        return response()->json("TODO: ProjectController@update", 200);
     }
 
     /**
@@ -59,8 +61,8 @@ class ProjectController extends Controller
      * @param  \App\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Project $project)
+    public function destroy(ProjectDestroyRequest $request, Project $project)
     {
-        //
+        return response()->json("TODO: ProjectController@destroy", 200);
     }
 }
