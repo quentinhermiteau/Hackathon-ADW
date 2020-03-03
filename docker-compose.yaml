@@ -32,6 +32,8 @@ services:
       - .:/home/php/app
 
   nginx:
+    depends_on:
+      - fpm
     container_name: nginx
     build:
       context: nginx
@@ -40,17 +42,29 @@ services:
     ports:
       - 80:80
     volumes:
-      - .:/usr/share/nginx/html;
+      - .:/usr/share/nginx/html
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./nginx/conf.d/www.conf:/etc/nginx/conf.d/www.conf
 
   fpm:
+    depends_on:
+      - postgresql
     container_name: fpm
     build:
-      context: fpm
+      context: .
       dockerfile: Dockerfile
     command: php-fpm7 --nodaemonize
     volumes:
       - .:/usr/share/nginx/html
       - ./fpm/php-fpm.d/www.conf:/etc/php7/php-fpm.d/www.conf
+
+  postgresql:
+    container_name: postgresql
+    image: postgres:latest
+    environment:
+      POSTGRES_PASSWORD: $DB_PASSWORD
+      POSTGRES_USER: $DB_USERNAME
+      POSTGRES_DB: $DB_DATABASE
+    volumes:
+      - ./postgres/data:/var/lib/postgresql/data
 
