@@ -8,6 +8,8 @@ use App\Http\Requests\ProjectDestroyRequest;
 use App\Http\Requests\ProjectRequest;
 use App\Project;
 use Illuminate\Http\Request;
+use App\Http\Requests\ProjectRequest;
+use App\Http\Requests\ProjectDestroyRequest;
 
 class ProjectController extends Controller
 {
