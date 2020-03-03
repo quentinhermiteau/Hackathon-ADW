@@ -12,3 +12,4 @@ npm-debug.log
 yarn-error.log
 postgres
 /public/mix-manifest.json
+/public/js
