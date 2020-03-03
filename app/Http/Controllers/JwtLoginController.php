@@ -27,6 +27,7 @@ class JwtLoginController extends Controller
         $today = new \DateTime();
         $issuedAt = $today->format("U");
         $notBefore = $today->modify("+1 second")->format("U");
+        $expire = $today->modify("+1 hour")->format("U");
 
         $payload = [
             "iss" => $httpHost,
@@ -35,7 +36,8 @@ class JwtLoginController extends Controller
             "nbf" => $notBefore,
             "data" => [
                 "id" => $foundUser->id
-            ]
+            ],
+            "exp" => $expire
         ];
 
         $key = env("APP_KEY", false);

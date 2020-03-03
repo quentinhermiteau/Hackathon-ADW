@@ -47,8 +47,10 @@ class JwtAuthentication
 
         try {
             $decoded = JWT::decode($jwtToken, $key, $algorithm);
-        } catch (BeforeValidException | ExpiredException | SignatureInvalidException $exception) {
+        } catch (BeforeValidException | SignatureInvalidException $exception) {
             return $this->handleErrorRedirection("Unauthorized", 401);
+        } catch (ExpiredException $exception) {
+            return $this->handleErrorRedirection("Token expired", 498);
         }
 
         return $next($request);
