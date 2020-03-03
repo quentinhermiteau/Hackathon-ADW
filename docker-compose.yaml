@@ -30,3 +30,27 @@ services:
     working_dir: /home/php/app
     volumes:
       - .:/home/php/app
+
+  nginx:
+    container_name: nginx
+    build:
+      context: nginx
+      dockerfile: Dockerfile
+    command: nginx
+    ports:
+      - 80:80
+    volumes:
+      - .:/usr/share/nginx/html;
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/conf.d/www.conf:/etc/nginx/conf.d/www.conf
+
+  fpm:
+    container_name: fpm
+    build:
+      context: fpm
+      dockerfile: Dockerfile
+    command: php-fpm7 --nodaemonize
+    volumes:
+      - .:/usr/share/nginx/html
+      - ./fpm/php-fpm.d/www.conf:/etc/php7/php-fpm.d/www.conf
+
