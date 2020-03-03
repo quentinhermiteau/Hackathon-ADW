@@ -61,7 +61,7 @@ class SpecializationController extends Controller
      * @param  \App\Specialization  $specialization
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SpecializationDeleteRequest $specialization)
+    public function destroy(Specialization $specialization)
     {
         return response()->json("TODO: SpecializationController@destroy", 200);
     }

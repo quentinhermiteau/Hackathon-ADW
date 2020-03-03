@@ -61,7 +61,7 @@ class ReviewController extends Controller
      * @param  \App\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ReviewDeleteRequest $review)
+    public function destroy(Review $review)
     {
         return response()->json("TODO: ReviewController@destroy", 200);
     }
