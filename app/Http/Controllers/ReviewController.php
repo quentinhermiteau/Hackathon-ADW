@@ -38,7 +38,7 @@ class ReviewController extends Controller
      * @param  \App\Review $review
      * @return \Illuminate\Http\JsonResponse
      */
-    public function show(Review $review)
+    public function show(ReviewRequest $review)
     {
         return response()->json("TODO: ReviewController@show", 200);
     }
