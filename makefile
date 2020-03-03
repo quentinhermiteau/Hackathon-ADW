@@ -1,12 +1,16 @@
-.PHONY: install start clean
+.PHONY: init install start clean
 
 # Install the PHP dependencies
 # Generate a new environment configuration file
 # Generate a Laravel application key
-install:
+init:
 	docker-compose run --rm composer install
 	cp .env.example .env
 	docker-compose run --rm artisan key:generate
+
+# Install the PHP dependencies
+install:
+	docker-compose run --rm composer install
 
 # Start the web server at http://localhost
 start:
