@@ -38,7 +38,7 @@ class SpecializationController extends Controller
      * @param  \App\Specialization $specialization
      * @return \Illuminate\Http\JsonResponse
      */
-    public function show(SpecializationRequest $specialization)
+    public function show(Specialization $specialization)
     {
         return response()->json("TODO: SpecializationController@show", 200);
     }
