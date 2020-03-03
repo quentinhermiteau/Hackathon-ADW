@@ -16,7 +16,8 @@ use Illuminate\Http\Request;
 Route::prefix('v1')->group(function () {
     Route::post("login", "JwtLoginController@login");
 
-    Route::group(['middleware' => ['jwt']], function () {
+Route::group(['middleware' => ['jwt']], function () {
+    Route::prefix('v1')->group(function () {
         Route::resources([
             // 'users' => 'UserController',
             'projects' => 'ProjectController',
