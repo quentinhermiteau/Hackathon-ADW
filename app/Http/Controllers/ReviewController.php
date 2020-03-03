@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ReviewDestroyRequest;
 use App\Http\Requests\ReviewRequest;
-use App\Http\Requests\ReviewDeleteRequest;
 use App\Review;
 use Illuminate\Http\Request;
 
@@ -14,7 +14,7 @@ class ReviewController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
@@ -24,8 +24,8 @@ class ReviewController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  \App\Http\Requests\ReviewRequest $request
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(ReviewRequest $request)
     {
@@ -35,8 +35,8 @@ class ReviewController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Review  $review
-     * @return \Illuminate\Http\Response
+     * @param  \App\Review $review
+     * @return \Illuminate\Http\JsonResponse
      */
     public function show(Review $review)
     {
@@ -46,9 +46,9 @@ class ReviewController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Review  $review
-     * @return \Illuminate\Http\Response
+     * @param  \App\Http\Requests\ReviewRequest $request
+     * @param  \App\Review $review
+     * @return \Illuminate\Http\JsonResponse
      */
     public function update(ReviewRequest $request, Review $review)
     {
@@ -58,10 +58,11 @@ class ReviewController extends Controller
     /**
      * Remove the specified resource from storage.
      *
+     * @param  \App\Http\Requests\ReviewDestroyRequest  $review
      * @param  \App\Review  $review
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function destroy(Review $review)
+    public function destroy(ReviewDestroyRequest $request, Review $review)
     {
         return response()->json("TODO: ReviewController@destroy", 200);
     }
