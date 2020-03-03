@@ -13,11 +13,11 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+Route::middleware('jwt')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['middleware' => ['auth:api']], function () {
+Route::group(['middleware' => ['jwt']], function () {
     Route::prefix('v1')->group(function () {
         // Route::resource('users', 'UserController');
         Route::resource('projects', 'ProjectController');

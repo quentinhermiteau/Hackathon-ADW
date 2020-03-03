@@ -7,6 +7,8 @@ use Firebase\JWT\JWT;
 use Firebase\JWT\BeforeValidException;
 use Firebase\JWT\ExpiredException;
 use Firebase\JWT\SignatureInvalidException;
+use Illuminate\Contracts\Encryption\DecryptException;
+use Illuminate\Support\Facades\Crypt;
 
 class JwtAuthentication
 {
@@ -33,24 +35,25 @@ class JwtAuthentication
         $key = env("APP_KEY", false); 
 
         if (!$key) {
-            return $this->handleErrorRedirection("Internal Server Error", 500);
+            return $this->handleErrorRedirection("APP_KEY env variable is missing", 500);
         }
 
         $algorithm = env("JWT_ALGORITHM", false);
 
-        if (!$jwtAlgorithm) {
-            return $this->handleErrorRedirection("Internal Server Error", 500);
+        if (!$algorithm) {
+            return $this->handleErrorRedirection("JWT_ALGORITHM env variable is missing", 500);
         }
 
-        $authorizationToken = $authorizationHeader[1];
-        $jwtToken = Crypt::decryptString($authorizationToken);
-
+        
         try {
-            $decoded = JWT::decode($jwtToken, $key, $algorithm);
+            $jwtToken = Crypt::decryptString($authorizationHeader[1]);
+            $decoded = JWT::decode($jwtToken, $key, [$algorithm]);
         } catch (BeforeValidException | SignatureInvalidException $exception) {
             return $this->handleErrorRedirection("Unauthorized", 401);
         } catch (ExpiredException $exception) {
             return $this->handleErrorRedirection("Token expired", 498);
+        } catch (DecryptException $exception) {
+            return $this->handleErrorRedirection("Invalid token payload", 500);
         }
 
         return $next($request);
