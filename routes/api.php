@@ -26,3 +26,5 @@ Route::group(['middleware' => ['auth:api']], function () {
         Route::resource('specializations', 'SpecializationController');
     });
 });
+
+Route::get("login", "JwtLoginController@login");
