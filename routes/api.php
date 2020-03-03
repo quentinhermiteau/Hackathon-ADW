@@ -27,4 +27,4 @@ Route::group(['middleware' => ['auth:api']], function () {
     });
 });
 
-Route::get("login", "JwtLoginController@login");
+Route::post("login", "JwtLoginController@login");
