@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SpecializationRequest;
+use App\Http\Requests\SpecializationDeleteRequest;
 use App\Specialization;
 use Illuminate\Http\Request;
 
@@ -25,7 +27,7 @@ class SpecializationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SpecializationRequest $request)
     {
         //
     }
@@ -36,7 +38,7 @@ class SpecializationController extends Controller
      * @param  \App\Specialization  $specialization
      * @return \Illuminate\Http\Response
      */
-    public function show(Specialization $specialization)
+    public function show(SpecializationRequest $specialization)
     {
         //
     }
@@ -48,7 +50,7 @@ class SpecializationController extends Controller
      * @param  \App\Specialization  $specialization
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Specialization $specialization)
+    public function update(SpecializationRequest $request, Specialization $specialization)
     {
         //
     }
@@ -59,7 +61,7 @@ class SpecializationController extends Controller
      * @param  \App\Specialization  $specialization
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Specialization $specialization)
+    public function destroy(SpecializationDeleteRequest $specialization)
     {
         //
     }

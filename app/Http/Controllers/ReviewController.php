@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ReviewRequest;
+use App\Http\Requests\ReviewDeleteRequest;
 use App\Review;
 use Illuminate\Http\Request;
 
@@ -25,7 +27,7 @@ class ReviewController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ReviewRequest $request)
     {
         //
     }
@@ -36,7 +38,7 @@ class ReviewController extends Controller
      * @param  \App\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function show(Review $review)
+    public function show(ReviewRequest $review)
     {
         //
     }
@@ -48,7 +50,7 @@ class ReviewController extends Controller
      * @param  \App\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Review $review)
+    public function update(ReviewRequest $request, Review $review)
     {
         //
     }
@@ -59,7 +61,7 @@ class ReviewController extends Controller
      * @param  \App\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Review $review)
+    public function destroy(ReviewDeleteRequest $review)
     {
         //
     }
