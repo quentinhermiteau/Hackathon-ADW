@@ -17,6 +17,7 @@ $ cd Hackathon-ADW
 ## Commands
 
 Command | Description
+---|---
 `make install` | Installation the PHP dependencies & configure Laravel environment.
 `make start` | Start the NGINX Web server at http://localhost.
 `make clean` | Removes the artifacts left from Docker.
