@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->char('password', 60);
             $table->date('birthday');
             $table->enum('role', ['ADMIN', 'AGENT']);
+            $table->enum('status', ['ENABLED', 'DISABLED'])->default('ENABLED');
             $table->rememberToken();
             $table->timestamps();
         });
