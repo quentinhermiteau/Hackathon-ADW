@@ -18,7 +18,7 @@ class SpecializationController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json("TODO: SpecializationController@index", 200);
     }
 
     /**
@@ -29,7 +29,7 @@ class SpecializationController extends Controller
      */
     public function store(SpecializationRequest $request)
     {
-        //
+        return response()->json("TODO: SpecializationController@store", 200);
     }
 
     /**
@@ -40,7 +40,7 @@ class SpecializationController extends Controller
      */
     public function show(Specialization $specialization)
     {
-        //
+        return response()->json("TODO: SpecializationController@show", 200);
     }
 
     /**
@@ -52,7 +52,7 @@ class SpecializationController extends Controller
      */
     public function update(SpecializationRequest $request, Specialization $specialization)
     {
-        //
+        return response()->json("TODO: SpecializationController@update", 200);
     }
 
     /**
@@ -63,6 +63,6 @@ class SpecializationController extends Controller
      */
     public function destroy(SpecializationDeleteRequest $specialization)
     {
-        //
+        return response()->json("TODO: SpecializationController@destroy", 200);
     }
 }

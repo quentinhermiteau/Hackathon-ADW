@@ -18,7 +18,7 @@ class ReviewController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json("TODO: ReviewController@index", 200);
     }
 
     /**
@@ -29,7 +29,7 @@ class ReviewController extends Controller
      */
     public function store(ReviewRequest $request)
     {
-        //
+        return response()->json("TODO: ReviewController@store", 200);
     }
 
     /**
@@ -40,7 +40,7 @@ class ReviewController extends Controller
      */
     public function show(Review $review)
     {
-        //
+        return response()->json("TODO: ReviewController@show", 200);
     }
 
     /**
@@ -52,7 +52,7 @@ class ReviewController extends Controller
      */
     public function update(ReviewRequest $request, Review $review)
     {
-        //
+        return response()->json("TODO: ReviewController@update", 200);
     }
 
     /**
@@ -63,6 +63,6 @@ class ReviewController extends Controller
      */
     public function destroy(ReviewDeleteRequest $review)
     {
-        //
+        return response()->json("TODO: ReviewController@destroy", 200);
     }
 }
