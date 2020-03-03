@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use Firebase\JWT\JWT;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Crypt;
+use App\Http\Requests\LoginRequest;
 use App\User;
 
 class JwtLoginController extends Controller
 {
-    public function login(Request $request)
+    public function login(LoginRequest $request)
     {
-        $foundUser = User::find([ "email" => $request->email, "status" => "ENABLED" ]);
+        $foundUser = User::where(["email" => $request->email, "status" => "ENABLED"])->first();
 
         if (!$foundUser) {
             return response()->json("User not found", 404);
