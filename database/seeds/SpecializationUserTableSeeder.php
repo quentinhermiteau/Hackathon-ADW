@@ -1,9 +1,9 @@
 <?php
 
+use App\SpecializationUser;
 use Illuminate\Database\Seeder;
-use App\AgentSpecialization;
 
-class AgentsSpecializationsTableSeeder extends Seeder
+class SpecializationUserTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,13 +12,13 @@ class AgentsSpecializationsTableSeeder extends Seeder
      */
     public function run()
     {
-        $agentsSpeacializations = [
+        $specializationsUsers = [
             ['agent_id' => 2, 'specialization_id' => 1],
             ['agent_id' => 3, 'specialization_id' => 1]
         ];
 
-        foreach ($agentsSpeacializations as $agentSpecialization) {
-            AgentSpecialization::create($agentSpecialization);
+        foreach ($specializationsUsers as $specializationUser) {
+            SpecializationUser::create($specializationUser);
         }
     }
 }

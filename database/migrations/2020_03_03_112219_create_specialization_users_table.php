@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAgentSpecializationsTable extends Migration
+class CreateSpecializationUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateAgentSpecializationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('agent_specializations', function (Blueprint $table) {
+        Schema::create('specialization_users', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('agent_id');
             $table->foreign('agent_id')->references('id')->on('users');
