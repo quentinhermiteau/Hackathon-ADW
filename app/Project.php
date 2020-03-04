@@ -19,7 +19,8 @@ class Project extends Model
         'contact_phone_number',
         'budget_min',
         'budget_max',
-        'user_id'
+        'user_id',
+        'referent_id'
     ];
 
     public function specializations()
@@ -27,8 +28,8 @@ class Project extends Model
         return $this->belongsToMany('App\Specialization');
     }
 
-    public function referent(): User
+    public function referent()
     {
-        return $this->hasOne('App\User', 'referent_id');
+        return $this->belongsTo('App\User', 'referent_id');
     }
 }
