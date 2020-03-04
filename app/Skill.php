@@ -12,4 +12,9 @@ class Skill extends Model
         'name',
         'specialization_id'
     ];
+
+    public function specialization()
+    {
+        return $this->hasOne('App\Specialization');
+    }
 }
