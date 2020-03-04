@@ -27,7 +27,7 @@ class ProjectRequest extends FormRequest
             "name"                  => "required|string",
             "description"           => "required|string",
             "realisation_date"      => "required|date",
-            "status"                => "required|in_array:WAITING,IN_PROGRESS,DONE",
+            "status"                => "required|in:WAITING,IN_PROGRESS,DONE",
             "client_name"           => "required|string",
             "contact_lastname"      => "required|string",
             "contact_phone_number"  => "required|string",
