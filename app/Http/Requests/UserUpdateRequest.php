@@ -29,7 +29,6 @@ class UserUpdateRequest extends FormRequest
             'lastname' => 'required|string',
             'email' => 'required|string|email',
             'birthday' => 'required|date',
-            'description' => 'required|string',
             'role' => 'required|string|in:ADMIN,AGENT',
             'status' => 'required|string|in:ENABLED,DISABLED'
         ];
