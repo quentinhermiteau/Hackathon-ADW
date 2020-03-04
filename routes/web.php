@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::any('{query}', function () {
+    return view('home');
+})->where("query", ".*");

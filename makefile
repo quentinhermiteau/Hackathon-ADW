@@ -5,6 +5,7 @@
 # Generate a Laravel application key
 init:
 	docker-compose run --rm composer install
+	docker-compose run --rm npm install
 	cp .env.example .env
 	docker-compose run --rm artisan key:generate
 
@@ -18,7 +19,7 @@ install:
 
 # Start the web server at http://localhost
 start:
-	docker-compose up --detach fpm nginx postgresql adminer
+	docker-compose up --detach fpm nginx postgresql adminer webpack
 
 # Remove the Docker artifacts
 stop:
