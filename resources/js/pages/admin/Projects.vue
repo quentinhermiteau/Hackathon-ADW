@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col s12 center">
-                <h1>Projets</h1>
+                <h1>Projets <router-link to="/admin/projet/nouveau"><button class="btn waves-effect waves-light green">nouveau</button></router-link></h1>
             </div>
         </div>
 
@@ -90,6 +90,14 @@ export default {
                 M.toast({
                     html: "Projet supprimé",
                     classes: "green"
+                });
+
+                return axios.get("/api/v1/projects", {
+                    headers: {
+                        Authorization: `Bearer ${this.getToken()}`
+                    }
+                }).then(response => {
+                    this.projects = response.data;
                 });
             }).catch(this.axiosErrorHandler);
         },
