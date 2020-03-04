@@ -32,8 +32,8 @@ class ProjectRequest extends FormRequest
             "contact_lastname"      => "required|string",
             "contact_phone_number"  => "required|string",
             "budget_min"            => "required|numeric|min:0",
-            "budget_max"            => "required|numeric|before:budget_min",
-            "referent_id"           => "required|exists:user,id"
+            "budget_max"            => "required|numeric|gt:budget_min",
+            "referent_id"           => "required|exists:users,id"
         ];
     }
 }
