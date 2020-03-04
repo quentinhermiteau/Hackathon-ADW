@@ -12,7 +12,11 @@ export default new Store({
         SET_TOKEN(state, token) {
             state.token = token;
 
-            window.localStorage.setItem("token", token);
+            if (!token) {
+                window.localStorage.removeItem("token");
+            } else {
+                window.localStorage.setItem("token", token);
+            }
         }
     },
     actions: {
