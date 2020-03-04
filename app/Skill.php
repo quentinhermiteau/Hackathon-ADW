@@ -8,5 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Skill extends Model
 {
-    protected $fillable = ['name', 'specialization_id'];
+    protected $fillable = [
+        'name',
+        'specialization_id'
+    ];
 }

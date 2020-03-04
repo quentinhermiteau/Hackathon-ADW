@@ -19,11 +19,13 @@ Route::middleware('jwt')->get('/user', function (Request $request) {
 
 Route::group(['middleware' => ['jwt']], function () {
     Route::prefix('v1')->group(function () {
-        // Route::resource('users', 'UserController');
-        Route::resource('projects', 'ProjectController');
-        Route::resource('reviews', 'ReviewController');
-        Route::resource('skills', 'SkillController');
-        Route::resource('specializations', 'SpecializationController');
+        Route::resources([
+            // 'users' => 'UserController',
+            'projects' => 'ProjectController',
+            'reviews' => 'ReviewController',
+            'skills' => 'SkillController',
+            'specializations' => 'SpecializationController'
+        ]);
     });
 });
 

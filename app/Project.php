@@ -8,7 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
 {
-    protected $fillable = ['name', 'description', 'realisation_date', 'status', 'client_name', 'contact_firstname', 'contact_lastname', 'contact_phone_number', 'budget_min', 'budget_max', 'user_id'];
+    protected $fillable = [
+        'name',
+        'description',
+        'realisation_date',
+        'status',
+        'client_name',
+        'contact_firstname',
+        'contact_lastname',
+        'contact_phone_number',
+        'budget_min',
+        'budget_max',
+        'user_id'
+    ];
 
     public function specializations()
     {
