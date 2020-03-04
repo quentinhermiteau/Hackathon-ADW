@@ -1,18 +1,40 @@
 <template>
-    <div>
-        <h1>Gestion utilisateurs</h1>
+    <div class="container">
+        <div class="col s12 center">
+            <h1>Gestion utilisateurs</h1>
+        </div>
         
-        <table>
+        <table class="striped centered">
             <thead>
-                <th><input placeholder="Nom" v-model="search.lastname"/></th>
-                <th><input placeholder="Prénom" v-model="search.firstname"/></th>
-                <th><input placeholder="Émail" v-model="search.email"/></th>
-                <th><input placeholder="Date de naissance" v-model="search.birthday"/></th>
-                <th><input placeholder="Description" v-model="search.description"/></th>
+                <th>
+                    <div class="input-field">
+                        <label for="lastname">Nom</label>
+                        <input type="text" id="lastname" v-model="search.lastname"/>
+                    </div>
+                </th>
+                <th>
+                    <div class="input-field">
+                        <label for="firstname">Prénom</label>
+                        <input type="text" id="firstname" v-model="search.firstname"/>
+                    </div>
+                </th>
+                <th>
+                    <div class="input-field">
+                        <label for="email">Émail</label>
+                        <input type="text" id="email" v-model="search.email"/>
+                    </div>
+                </th>
+                <th>
+                    <div class="input-field">
+                        <label for="birthday">Néé le</label>
+                        <input type="text" id="birthdade naissance" v-model="search.birthday"/>
+                    </div>
+                </th>
+                <th>Description</th>
                 <th>Spécialisations</th>
                 <th>Compétences</th>
-                <th><input placeholder="Rôle" v-model="search.role"/></th>
-                <th><input placeholder="Statut" v-model="search.status"/></th>
+                <th>Rôles</th>
+                <th>Statut</th>
                 <th>Actions</th>
             </thead>
             <tbody>
@@ -25,21 +47,21 @@
                     <td>{{getSpecializations(user)}}</td>
                     <td>{{getSkills(user)}}</td>
                     <td>
-                        <select v-model="user.role">
+                        <select class="browser-default" v-model="user.role">
                             <option value="ADMIN">Admin</option>
                             <option value="AGENT">Agent</option>
                         </select>
                     </td>
                     <td>
-                        <select v-model="user.status">
+                        <select class="browser-default" v-model="user.status">
                             <option value="ENABLED">Activé</option>
                             <option value="DISABLED">Désactivé</option>
                         </select>
                     </td>
-                    <td>
-                        <button v-on:click="showUser(user)">Visualiser</button> -
-                        <button v-on:click="updateUser(user)">Modifier</button> -
-                        <button v-on:click="deleteUser(user)">Supprimer</button>
+                    <td class="actions">
+                        <i class="material-icons tooltipped green-text cursors" data-position="bottom" data-tooltip="Visualiser" v-on:click="showUser(user)">remove_red_eye</i>
+                        <i class="material-icons tooltipped orange-text cursors" data-position="bottom" data-tooltip="Modifier" v-on:click="updateUser(user)">edit</i>
+                        <i class="material-icons tooltipped red-text cursors" data-position="bottom" data-tooltip="Supprimer" v-on:click="deleteUser(user)">delete</i>
                     </td>
                 </tr>
             </tbody>
@@ -50,18 +72,17 @@
 
 <script>
 import axios from 'axios';
+import {mapGetters, mapActions} from 'vuex';
 
 export default {
     data() {
         return {
-            token: "eyJpdiI6ImQ3cWZUclhyT29UUStmc2NzQmVkQ1E9PSIsInZhbHVlIjoiOGo5ME0wWjZoamRIRTR4ekRtVWZlcjJ3aFlRNFJhQk11MWd4VkVPRCt6ck4xZWYySFJUSFQwZVcxYWZTdlwvYkFzUG1CRHh6MlwvcndcL3IzMjVOcjlZTG9ObVhFYkZyRnZLc094Zm5NUGVpd2FraEZ1V1hEaDUzeEN4ZDgreUFjeDByYnk3MFFWdUtcL3kzT1NxMFc5TzIybGxDQkhTdjJYM1ZEUG96TEJRTVg4OEJleHpyNkEyRmVsYXFDdEh5ZFFKUndwK0JoR21zRm5Cb0pKWUZYTnVJWURsblRWZFJBYkFuV09neGJ5OGZUam1hZ2tHVENsK3JqZVc0eW82NExTNHE2SmZFTjYyNjJycWEwYjE3d01DRWVXdmJiNVpXQzhRekhTTEFVa3JxVjdLMjFKbzBod1RNaUxlN0FhbFhpTFJIIiwibWFjIjoiZjMxNzZmZmRhYmMxYTcyMzAwM2ViOTY1ZDJjMTMyMjI0ODcwNDA4MDIwZTUzYmM1YjkwMjdmMzM1MGQ1YjlkNCJ9",
             users: [],
             search: {
                 lastname: '',
                 firstname: '',
                 email: '',
                 birthday: '',
-                description: '',
                 role: '',
                 status: '',
             }
@@ -77,40 +98,37 @@ export default {
                 user.firstname.includes(this.search.firstname) &&
                 user.email.includes(this.search.email) &&
                 user.birthday.includes(this.search.birthday) &&
-                user.description.includes(this.search.description) &&
                 user.role.includes(this.search.role) &&
                 user.status.includes(this.search.status)
+            }).sort((userA, userB) => {
+                return new Date(userA.created_at) > new Date(userB.created_at);
             });
         }
     },
     methods: {
+        ...mapGetters(['getToken']),
+        ...mapActions(['axiosErrorHandler']),
         getUsers() {
-            axios({method: 'GET', url: '/api/v1/users', headers: {'Authorization': `Bearer ${this.token}`}})
+            axios({method: 'GET', url: '/api/v1/users', headers: {'Authorization': `Bearer ${this.getToken()}`}})
             .then(response => {
                 this.users = response.data;
-            }).catch(error => {
-                console.error(error);
-            })
+            }).catch(this.axiosErrorHandler)
         },
         showUser(user) {
             this.$router.push(`/profil/${user.id}`);
         },
         updateUser(user) {
-            axios({method: 'PUT', url: `/api/v1/users/${user.id}`, data: user, headers: {'Authorization': `Bearer ${this.token}`}})
+            axios({method: 'PUT', url: `/api/v1/users/${user.id}`, data: user, headers: {'Authorization': `Bearer ${this.getToken()}`}})
             .then(response => {
-                console.log('User modifié');
-            }).catch(error => {
-                console.error(error);
-            })
+                M.toast({html: 'Utilisateur modifié avec succès.', classes: 'green'});
+            }).catch(this.axiosErrorHandler)
         },
         deleteUser(user) {
-            axios({method: 'DELETE', url: `/api/v1/users/${user.id}`, data: user, headers: {'Authorization': `Bearer ${this.token}`}})
+            axios({method: 'DELETE', url: `/api/v1/users/${user.id}`, data: user, headers: {'Authorization': `Bearer ${this.getToken()}`}})
             .then(response => {
-                console.log(response);
+                M.toast({html: 'Utilisateur supprimé avec succès.', classes: 'green'});
                 this.getUsers();
-            }).catch(error => {
-                console.log(error);
-            })
+            }).catch(this.axiosErrorHandler)
         },
         getSpecializations(user) {
             return user.specializations.map(specialization => specialization.name).join(', ');

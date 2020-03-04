@@ -7,6 +7,7 @@
         <meta name="theme-color" content="#fff">
         <link rel="apple-touch-icon" href="favicon.ico">
         <link rel="stylesheet" href="{{ asset("css/materialize.css") }}">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <title>Agents du Web | 148</title>
     </head>
     <body>
