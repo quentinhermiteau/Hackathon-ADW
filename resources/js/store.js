@@ -22,8 +22,6 @@ export default new Store({
             context.commit("SET_TOKEN", token);
         },
         axiosErrorHandler(context, error) {
-            console.log("ERROR HANDLER");
-
             if (error.response.status === 422) {
                 M.toast({
                     html: Object.values(error.response.data.errors)[0][0],
