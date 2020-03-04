@@ -52,8 +52,6 @@ class ProjectController extends Controller
      */
     public function update(ProjectRequest $request, Project $project)
     {
-        var_dump($request->input());
-
         $project->update($request->input());
 
         return response()->json("Updated", 204);
