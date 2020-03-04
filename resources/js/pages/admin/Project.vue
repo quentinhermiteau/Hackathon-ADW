@@ -111,7 +111,6 @@ export default {
                 budget_max: "",
                 referent_id: ""
             },
-            statuses: [],
             users: []
         };
     },
