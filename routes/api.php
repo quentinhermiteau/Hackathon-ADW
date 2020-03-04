@@ -18,7 +18,7 @@ Route::prefix('v1')->group(function () {
 
     Route::group(['middleware' => ['jwt']], function () {
         Route::resources([
-            // 'users' => 'UserController',
+            'users' => 'UserController',
             'projects' => 'ProjectController',
             'reviews' => 'ReviewController',
             'skills' => 'SkillController',
