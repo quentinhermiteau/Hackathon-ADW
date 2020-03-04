@@ -17,8 +17,8 @@ class DatabaseSeeder extends Seeder
             SpecializationsTableSeeder::class,
             SkillsTableSeeder::class,
             ProjectsTableSeeder::class,
-            AgentsSpecializationsTableSeeder::class,
-            ProjectsSpecializationsTableSeeder::class
+            SpecializationUserTableSeeder::class,
+            ProjectSpecializationTableSeeder::class
         ]);
     }
 }

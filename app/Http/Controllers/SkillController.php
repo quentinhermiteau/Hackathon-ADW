@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SkillDestroyRequest;
+use App\Http\Requests\SkillRequest;
 use App\Skill;
 use Illuminate\Http\Request;
-use App\Http\Requests\SkillRequest;
-use App\Http\Requests\SkillDestroyRequest;
 
 class SkillController extends Controller
 {

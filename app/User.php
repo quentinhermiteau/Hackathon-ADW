@@ -22,7 +22,8 @@ class User extends Authenticatable
         'lastname',
         'email',
         'password',
-        'birthday', 
+        'birthday',
+        'description',
         'role',
         'status'
     ];
@@ -52,6 +53,6 @@ class User extends Authenticatable
 
     public function specializations()
     {
-        return $this->belongsToMany('App\Specialization');
+        return $this->belongsToMany('App\Specialization', 'specialization_users', 'agent_id');
     }
 }

@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\ProjectSpecialization;
 
-class ProjectsSpecializationsTableSeeder extends Seeder
+class ProjectSpecializationTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
