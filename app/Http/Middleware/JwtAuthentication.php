@@ -43,7 +43,6 @@ class JwtAuthentication
         if (!$algorithm) {
             return $this->handleErrorRedirection("JWT_ALGORITHM env variable is missing", 500);
         }
-
         
         try {
             $jwtToken = Crypt::decryptString($authorizationHeader[1]);
@@ -53,7 +52,7 @@ class JwtAuthentication
         } catch (ExpiredException $exception) {
             return $this->handleErrorRedirection("Token expired", 498);
         } catch (DecryptException $exception) {
-            return $this->handleErrorRedirection("Invalid token payload", 500);
+            return $this->handleErrorRedirection("Invalid token payload", 498);
         }
 
         return $next($request);

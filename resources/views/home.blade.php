@@ -6,6 +6,7 @@
         <meta name="description" content="Agents du Web | 148">
         <meta name="theme-color" content="#fff">
         <link rel="apple-touch-icon" href="favicon.ico">
+        <link rel="stylesheet" href="{{ asset("css/materialize.css") }}">
         <title>Agents du Web | 148</title>
     </head>
     <body>

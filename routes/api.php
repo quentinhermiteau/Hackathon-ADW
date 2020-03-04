@@ -13,12 +13,10 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('jwt')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::prefix('v1')->group(function () {
+    Route::post("login", "JwtLoginController@login");
 
-Route::group(['middleware' => ['jwt']], function () {
-    Route::prefix('v1')->group(function () {
+    Route::group(['middleware' => ['jwt']], function () {
         Route::resources([
             // 'users' => 'UserController',
             'projects' => 'ProjectController',
@@ -29,4 +27,3 @@ Route::group(['middleware' => ['jwt']], function () {
     });
 });
 
-Route::post("login", "JwtLoginController@login");
