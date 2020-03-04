@@ -1,10 +1,14 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
+import AdminProjects from "./pages/admin/Projects.vue";
+import AdminUsers from "./pages/admin/Users.vue";
+import Agents from "./pages/Agents.vue";
 import Home from "./pages/Home.vue";
-import PageNotFound from "./pages/PageNotFound.vue";
 import Login from "./pages/Login.vue";
+import PageNotFound from "./pages/PageNotFound.vue";
+import Profil from "./pages/Profil.vue";
 import Projects from "./pages/Projects.vue";
 import store from "./store.js";
+import Vue from "vue";
+import VueRouter from "vue-router";
 
 Vue.use(VueRouter);
 
@@ -22,6 +26,22 @@ const router = new VueRouter({
         {
             path: "/projets",
             component: Projects
+        },
+        {
+            path: "/agents",
+            component: Agents
+        },
+        {
+            path: "/profil/:id",
+            component: Profil
+        },
+        {
+            path: "/admin/projets",
+            component: AdminProjects
+        },
+        {
+            path: "/admin/users",
+            component: AdminUsers
         },
         {
             path: "*",
