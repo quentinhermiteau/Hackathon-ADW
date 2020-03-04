@@ -1,8 +1,6 @@
 import Vue from "vue";
 import VueX, { Store } from "vuex";
-import M from "materialize-css";
 import router from "./router.js";
-
 
 Vue.use(VueX);
 

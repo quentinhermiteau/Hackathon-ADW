@@ -5,7 +5,6 @@ import PageNotFound from "./pages/PageNotFound.vue";
 import Login from "./pages/Login.vue";
 import Projects from "./pages/Projects.vue";
 import store from "./store.js";
-import M from "materialize-css";
 
 Vue.use(VueRouter);
 
