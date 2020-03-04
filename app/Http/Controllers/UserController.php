@@ -39,7 +39,7 @@ class UserController extends Controller
      */
     public function show(int $id)
     {
-        $user = User::with('specializations.skills')->where(['id' => $id])->get();
+        $user = User::with('specializations.skills')->where(['id' => $id])->first();
         return response()->json($user, 200);
     }
 

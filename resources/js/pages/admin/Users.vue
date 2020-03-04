@@ -20,7 +20,7 @@
                 </th>
                 <th>
                     <div class="input-field">
-                        <label for="email">Émail</label>
+                        <label for="email">Email</label>
                         <input type="text" id="email" v-model="search.email"/>
                     </div>
                 </th>
