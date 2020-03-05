@@ -51,7 +51,7 @@ router.beforeEach(function(to, from, next) {
         behavior: "smooth"
     });
 
-    if (!["/connexion", "/inscription"].includes(to.path) && !store.state.token) {
+    if (!["/connexion", "/inscription", "/"].includes(to.path) && !store.state.token) {
         M.toast({
             html: "Merci de vous connecter",
             classes: "red"
@@ -62,24 +62,13 @@ router.beforeEach(function(to, from, next) {
         return;
     }
 
-    if (to.path === "/inscription" && store.state.token) {
+    if (["/inscription", "/connexion", "/"].includes(to.path) && store.state.token) {
         M.toast({
             html: "Déjà connecté",
             classes: "orange"
         });
 
-        router.push("/");
-
-        return;
-    }
-
-    if (to.path === "/connexion" && store.state.token) {
-        M.toast({
-            html: "Déjà connecté",
-            classes: "orange"
-        });
-
-        next(from.path);
+        router.push("/profil");
 
         return;
     }
