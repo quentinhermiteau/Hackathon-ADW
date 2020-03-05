@@ -28,8 +28,7 @@ class RegistrationRequest extends FormRequest
             "firstname"             => "required|min:3",
             "email"                 => "required|email",
             "birthday"              => "required|date",
-            "password"              => "required",
-            "password_confirmation" => "required|same:password"
+            "password"              => "required|confirm",
         ];
     }
 }
