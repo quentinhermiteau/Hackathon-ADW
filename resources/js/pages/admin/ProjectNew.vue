@@ -26,6 +26,7 @@
                 <div class="col s12 input-field">
                     <label for="status" class="active">Statut</label>
                     <select class="browser-default" id="status" v-model="project.status">
+                        <option value=""> -- Choisissez un statut -- </option>
                         <option value="WAITING">En attente</option>
                         <option value="IN_PROGRESS">En cours</option>
                         <option value="DONE">Terminé</option>
@@ -66,12 +67,13 @@
                     <label for="referent_id" class="active">Référent</label>
 
                     <select class="browser-default" id="referent_id" v-model="project.referent_id">
+                        <option value=0> -- Choisissez un référent -- </option>
                         <option v-for="user in users" :key="user.id" :value="user.id">{{ user.lastname }} {{ user.firstname }}</option>
                     </select>
                 </div>
 
                  <div class="col s12 center">
-                     <button class="btn waves-effect waves-light green" type="submit">ajouter</button>
+                     <button class="btn waves-effect waves-light green" type="submit">Ajouter</button>
                 </div>
             </div>
         </form>
@@ -96,7 +98,7 @@ export default {
                 contact_phone_number: "",
                 budget_min: "",
                 budget_max: "",
-                referent_id: ""
+                referent_id: 0
             },
             users: []
         };

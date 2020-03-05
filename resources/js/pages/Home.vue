@@ -16,14 +16,12 @@ export default {
         ])
     },
     created() {
-        console.log(this.getToken());
-
         axios.get("/api/v1/projects", {
             headers: {
                 "Authorization": `Bearer ${this.getToken()}`
             }
         }).then(response => {
-            console.log(response);
+            // console.log(response);
         }).catch(this.axiosErrorHandler);
     }
 };

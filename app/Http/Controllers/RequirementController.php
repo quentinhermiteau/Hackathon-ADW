@@ -27,7 +27,9 @@ class RequirementController extends Controller
      */
     public function store(RequirementRequest $request)
     {
-        //
+        Requirement::create($request->input());
+
+        return response()->json("Created", 201);
     }
 
     /**
@@ -38,7 +40,7 @@ class RequirementController extends Controller
      */
     public function show(Requirement $requirement)
     {
-        //
+        return response()->json($requirement, 200);
     }
 
     /**
@@ -51,7 +53,8 @@ class RequirementController extends Controller
     public function update(RequirementRequest $request, Requirement $requirement)
     {
         $requirement->update($request->input());
-        return response()->json("Successfully modified", 204);
+
+        return response()->json("Updated", 204);
     }
 
     /**
@@ -64,6 +67,6 @@ class RequirementController extends Controller
     public function destroy(RequirementDestroyRequest $request, Requirement $requirement)
     {
         $requirement->delete();
-        return response()->json("Successfully deleted", 204);
+        return response()->json("Deleted", 204);
     }
 }
