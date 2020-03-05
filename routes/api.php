@@ -17,6 +17,7 @@ Route::prefix('v1')->group(function () {
     Route::post("login", "JwtLoginController@login");
     Route::post("registration", "RegistrationController");
     Route::put("users/{user}/requirements/{requirement}", "RequirementUserController");
+    Route::post("project-user", "ProjectUserController");
 
     Route::group(['middleware' => ['jwt']], function () {
         Route::resources([
@@ -25,7 +26,7 @@ Route::prefix('v1')->group(function () {
             'reviews' => 'ReviewController',
             'skills' => 'SkillController',
             'specializations' => 'SpecializationController',
-            'requirements' => 'RequirementController',
+            'requirements' => 'RequirementController'
         ]);
     });
 });

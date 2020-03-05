@@ -17,7 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return response()->json(User::with(['specialization.skills', 'requirements'])->get(), 200);
+        return response()->json(User::with(['specialization.skills', 'requirements', 'projects'])->get(), 200);
     }
 
     /**
@@ -39,7 +39,7 @@ class UserController extends Controller
      */
     public function show(int $id)
     {
-        $user = User::with(['specialization.skills', 'requirements'])->where(['id' => $id])->get();
+        $user = User::with(['specialization.skills', 'requirements', "projects"])->where(['id' => $id])->first();
         return response()->json($user, 200);
     }
 

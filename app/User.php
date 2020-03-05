@@ -59,7 +59,7 @@ class User extends Authenticatable
 
     public function projects()
     {
-        return $this->hasMany('App\Project', 'agent_id');
+        return $this->belongsToMany('App\Project', "project_users");
     }
 
     public function requirements()
