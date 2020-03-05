@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProjectDestroyRequest;
 use App\Http\Requests\ProjectRequest;
 use App\Project;
+use App\ProjectSpecialization;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -29,7 +30,9 @@ class ProjectController extends Controller
      */
     public function store(ProjectRequest $request)
     {
-        Project::create($request->input());
+        $project = Project::create($request->input());
+        $request->merge(['project_id' => $project->id]);
+        ProjectSpecialization::create($request->input());
 
         return response()->json("Created", 201);
     }
