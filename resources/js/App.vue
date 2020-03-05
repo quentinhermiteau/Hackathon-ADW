@@ -1,10 +1,6 @@
 <template>
     <div>
         <ul class="sidenav" id="menu">
-            <li v-if="isLogged">
-                <a href="" @click.prevent="logout" class="black-text">Déconnexion</a>
-            </li>
-
             <li v-if="isLogged"> 
                 <router-link to="/profil" class="black-text">Profil</router-link>
             </li> 
@@ -16,6 +12,10 @@
             <li v-if="isLogged"> 
                 <router-link to="/projets" class="black-text">Projets</router-link>
             </li> 
+
+            <li v-if="isLogged">
+                <a href="" @click.prevent="logout" class="black-text">Déconnexion</a>
+            </li>
 
             <li v-else>
                 <router-link to="/connexion" class="black-text">Connexion</router-link>
@@ -31,10 +31,6 @@
                     </a>
                     
                     <ul class="right hide-on-med-and-down">
-                        <li v-if="isLogged">
-                            <a href="" @click.prevent="logout" class="black-text">Déconnexion</a>
-                        </li>
-
                         <li v-if="isLogged"> 
                             <router-link to="/profil" class="black-text">Profil</router-link>
                         </li> 
@@ -45,7 +41,11 @@
 
                         <li v-if="isLogged"> 
                             <router-link to="/projets" class="black-text">Projets</router-link>
-                        </li> 
+                        </li>
+
+                        <li v-if="isLogged">
+                            <a href="" @click.prevent="logout" class="black-text">Déconnexion</a>
+                        </li>
 
                         <li v-else>
                             <router-link to="/connexion" class="black-text">Connexion</router-link>

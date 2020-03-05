@@ -66,7 +66,7 @@
                 <label for="referent_id" class="active">Référent</label>
 
                 <select class="browser-default" id="referent_id" v-model="project.referent_id">
-                    <option v-for="user in users" :value="user.id">{{ user.lastname }} {{ user.firstname}}</option>
+                    <option v-for="user in users" :value="user.id" v-bind:key="user.id">{{ user.lastname }} {{ user.firstname}}</option>
                 </select>
             </div>
 
@@ -171,6 +171,7 @@ export default {
             this.project = response.data;
 
             this.$nextTick(() => {
+                M.Modal.init(document.querySelectorAll(".modal"), {});
                 M.updateTextFields();
                 M.Sidenav.init(document.querySelectorAll(".sidenav"), {});
             });

@@ -17,4 +17,9 @@ class Specialization extends Model
     {
         return $this->hasMany('App\Skill');
     }
+
+    public function requirements()
+    {
+        return $this->hasMany('App\Requirement');
+    }
 }
