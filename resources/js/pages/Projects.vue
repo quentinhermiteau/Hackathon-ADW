@@ -8,7 +8,7 @@
 
         <div class="row">
             <div class="col s12 center">
-                <table class="responsive-table">
+                <table class="highlight responsive-table">
                     <thead>
                         <th>Nom</th>
                         <th>Deadline</th>
