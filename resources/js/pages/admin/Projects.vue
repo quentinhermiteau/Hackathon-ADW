@@ -16,6 +16,7 @@
                         <th>Client</th>
                         <th>Budget min.</th>
                         <th>Budget max.</th>
+                        <th>Agent</th>
                         <th>Référent</th>
                         <th>Actions</th>
                     </thead>
@@ -28,6 +29,7 @@
                             <td>{{ project.client_name }}</td>
                             <td>{{ project.budget_min }}</td>
                             <td>{{ project.budget_max }}</td>
+                            <td>{{ project.agent.lastname }} {{ project.agent.firstname }}</td>
                             <td>{{ project.referent.lastname }} {{ project.referent.firstname }}</td>
 
                             <td class="actions">

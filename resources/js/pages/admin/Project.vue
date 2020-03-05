@@ -63,6 +63,14 @@
             </div>
 
             <div class="col s12 input-field">
+                <label for="agent_id" class="active">Agent</label>
+
+                <select class="browser-default" id="agent_id" v-model="project.agent_id">
+                    <option v-for="user in users" :value="user.id" v-bind:key="user.id">{{ user.lastname }} {{ user.firstname}}</option>
+                </select>
+            </div>
+
+            <div class="col s12 input-field">
                 <label for="referent_id" class="active">Référent</label>
 
                 <select class="browser-default" id="referent_id" v-model="project.referent_id">

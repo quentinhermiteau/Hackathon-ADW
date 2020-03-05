@@ -25,6 +25,8 @@ class CreateProjectsTable extends Migration
             $table->string('contact_phone_number');
             $table->float('budget_min');
             $table->float('budget_max');
+            $table->unsignedBigInteger('agent_id');
+            $table->foreign('agent_id')->references('id')->on('users');
             $table->unsignedBigInteger('referent_id');
             $table->foreign('referent_id')->references('id')->on('users');
             $table->timestamps();

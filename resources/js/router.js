@@ -27,7 +27,7 @@ const router = new VueRouter({
         { path: "/admin/formations", component: AdminRequirements },
         { path: "/admin/projet/nouveau", component: AdminProjectNew },
         { path: "/admin/projets", component: AdminProjects },
-        { path: "/admin/users", component: AdminUsers },
+        { path: "/admin/agents", component: AdminUsers },
         { path: "/agents", component: Agents },
         { path: "/connexion", component: Login },
         { path: "/inscription", component: Registration },

@@ -22,6 +22,7 @@ class ProjectsTableSeeder extends Seeder
             'contact_phone_number' => 'Numéro du contact',
             'budget_min' => 1,
             'budget_max' => 10,
+            'agent_id' => 2,
             'referent_id' => 1
         ]);
     }
