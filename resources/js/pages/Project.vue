@@ -8,7 +8,7 @@
 
         <div class="row">
             <div class="col s12">
-                <table>
+                <table class="responsive-table">
                     <tbody>
                         <tr>
                             <th>Nom</th>
