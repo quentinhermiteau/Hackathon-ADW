@@ -16,9 +16,9 @@ class CreateProjectSpecializationsTable extends Migration
         Schema::create('project_specializations', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('project_id');
-            $table->foreign('project_id')->references('id')->on('projects');
+            $table->foreign('project_id')->references('id')->on('projects')->onDelete("cascade");
             $table->unsignedBigInteger('specialization_id');
-            $table->foreign('specialization_id')->references('id')->on('specializations');
+            $table->foreign('specialization_id')->references('id')->on('specializations')->onDelete("cascade");
             $table->timestamps();
         });
     }

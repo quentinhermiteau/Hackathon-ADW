@@ -18,7 +18,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        return response()->json("ProjectController@index", 200);
+        return response()->json(Project::with(["referent"])->get(), 200);
     }
 
     /**
@@ -29,7 +29,9 @@ class ProjectController extends Controller
      */
     public function store(ProjectRequest $request)
     {
-        return response()->json("TODO: ProjectController@store", 200);
+        Project::create($request->input());
+
+        return response()->json("Created", 201);
     }
 
     /**
@@ -40,7 +42,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        return response()->json("TODO: ProjectController@show", 200);
+        return response()->json($project, 200);
     }
 
     /**
@@ -52,7 +54,9 @@ class ProjectController extends Controller
      */
     public function update(ProjectRequest $request, Project $project)
     {
-        return response()->json("TODO: ProjectController@update", 200);
+        $project->update($request->input());
+
+        return response()->json("Updated", 204);
     }
 
     /**
@@ -64,6 +68,8 @@ class ProjectController extends Controller
      */
     public function destroy(ProjectDestroyRequest $request, Project $project)
     {
-        return response()->json("TODO: ProjectController@destroy", 200);
+        $project->delete();
+
+        return response()->json("Delete", 204);
     }
 }
