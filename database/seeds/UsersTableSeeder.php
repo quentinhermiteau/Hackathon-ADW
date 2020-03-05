@@ -23,7 +23,8 @@ class UsersTableSeeder extends Seeder
                 'password' => Hash::make('password'),
                 'birthday' => $birthday,
                 'description' => '',
-                'role' => 'ADMIN'
+                'role' => 'ADMIN',
+                'specialization_id' => 1
             ],
             [
                 'firstname' => 'agent1',
@@ -32,7 +33,8 @@ class UsersTableSeeder extends Seeder
                 'password' => Hash::make('password'),
                 'birthday' => $birthday,
                 'description' => 'Amoureux du PHP',
-                'role' => 'AGENT'
+                'role' => 'AGENT',
+                'specialization_id' => 4
             ],
             [
                 'firstname' => 'agent2',
@@ -41,7 +43,8 @@ class UsersTableSeeder extends Seeder
                 'password' => Hash::make('password'),
                 'birthday' => $birthday,
                 'description' => 'Amoureux du JS',
-                'role' => 'AGENT'
+                'role' => 'AGENT',
+                'specialization_id' => 4
             ]
         ];
 

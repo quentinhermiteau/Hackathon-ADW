@@ -17,7 +17,7 @@ class JwtLoginController extends Controller
      */
     public function login(LoginRequest $request)
     {
-        $foundUser = User::where(["email" => $request->email, "status" => "ENABLED"])->first();
+        $foundUser = User::with(['specialization.skills', 'requirements'])->where(["email" => $request->email, "status" => "ENABLED"])->first();
 
         if (!$foundUser) {
             return response()->json("User not found", 404);

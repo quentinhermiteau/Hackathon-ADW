@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RegistrationRequest;
+use App\Requirement;
+use App\RequirementUser;
 use App\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -21,7 +23,13 @@ class RegistrationController extends Controller
             "password" => Hash::make($request->password)
         ]);
 
-        User::create($request->input());
+        $user = User::create($request->input());
+
+        $requirements = Requirement::where(['specialization_id' => $request->specialization_id])->get();
+
+        foreach ($requirements as $requirement) {
+            RequirementUser::create(['requirement_id' => $requirement->id, 'user_id' => $user->id]);
+        }
 
         return response()->json("Created", 201);
     }

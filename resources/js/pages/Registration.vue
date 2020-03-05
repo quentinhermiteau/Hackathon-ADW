@@ -49,6 +49,19 @@
                 </div>
             </div>
 
+            <div class="col s12 input-field">
+                <label for="specialization_id" class="active">Spécialisation</label>
+                <select class="browser-default" id="specialization_id" v-model="user.specialization_id">
+                    <option value=0 selected> -- Choisissez une spécialisation -- </option>
+                    <option value=1>Conseil</option>
+                    <option value=2>Créatif</option>
+                    <option value=3>Content</option>
+                    <option value=4>Digital</option>
+                    <option value=5>Acquisition</option>
+                    <option value=6>Event</option>
+                </select>
+            </div>
+
             <div class="row">
                 <div class="col s12 center">
                     <button type="submit" class="btn waves-effect waves-light green">S'inscrire</button>

@@ -1,6 +1,6 @@
 <?php
 
-use App\RequirementUsers;
+use App\RequirementUser;
 use Illuminate\Database\Seeder;
 
 class RequirementUsersTableSeeder extends Seeder
@@ -26,7 +26,7 @@ class RequirementUsersTableSeeder extends Seeder
         ];
 
         foreach ($requirementUsers as $requirementUser) {
-            RequirementUsers::create($requirementUser);
+            RequirementUser::create($requirementUser);
         }
     }
 }
