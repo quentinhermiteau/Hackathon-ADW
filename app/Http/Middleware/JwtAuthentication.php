@@ -2,10 +2,11 @@
 
 namespace App\Http\Middleware;
 
+use App\User;
 use Closure;
-use Firebase\JWT\JWT;
 use Firebase\JWT\BeforeValidException;
 use Firebase\JWT\ExpiredException;
+use Firebase\JWT\JWT;
 use Firebase\JWT\SignatureInvalidException;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Support\Facades\Crypt;
@@ -54,6 +55,14 @@ class JwtAuthentication
         } catch (DecryptException $exception) {
             return $this->handleErrorRedirection("Invalid token payload", 498);
         }
+
+        try {
+            $userRole = User::findOrFail($decoded->data->id)->role;
+        } catch (Exception $exception) {
+            return response()->json("User not found", 404);
+        }
+
+        $request->merge(["USER_ROLE" => $userRole]);
 
         return $next($request);
     }

@@ -1,5 +1,12 @@
 <template>
-    <h1>Page d'accueil</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col s12 center">
+                <h1>Les Agents du Web</h1>
+                <h6>By 148</h6>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>

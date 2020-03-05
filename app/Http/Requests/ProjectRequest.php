@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
 
 class ProjectRequest extends FormRequest
 {
@@ -11,8 +12,12 @@ class ProjectRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(Request $request)
     {
+        if ($request->USER_ROLE !== "ADMIN") {
+            return false;
+        }
+
         return true;
     }
 
@@ -23,6 +28,7 @@ class ProjectRequest extends FormRequest
      */
     public function rules()
     {
+
         return [
             "name"                  => "required|string",
             "description"           => "required|string",

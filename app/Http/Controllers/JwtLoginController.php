@@ -50,6 +50,9 @@ class JwtLoginController extends Controller
             return response()->json("Internal Server Error", 500);
         }
 
-        return response()->json(Crypt::encryptString(JWT::encode($payload, $key)), 200);
+        return response()->json([
+            "role" => $foundUser->role,
+            "token" => Crypt::encryptString(JWT::encode($payload, $key))
+        ], 200);
     }
 }
