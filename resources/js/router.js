@@ -12,6 +12,7 @@ import PageNotFound from "./pages/PageNotFound.vue";
 import Profil from "./pages/Profil.vue";
 import Project from "./pages/Project.vue";
 import Projects from "./pages/Projects.vue";
+import Registration from "./pages/Registration.vue";
 import Vue from "vue";
 import VueRouter from "vue-router";
 import store from "./store.js";
@@ -22,16 +23,17 @@ const router = new VueRouter({
     mode: "history",
     routes: [
         { path: "/", component: Home },
-        { path: "/admin/projet/nouveau", component: AdminProjectNew },
-        { path: "/admin/projet/:id", component: AdminProject },
-        { path: "/admin/projets", component: AdminProjects },
         { path: "/admin/formation/nouveau", component: AdminRequirementNew },
-        { path: "/admin/formation/:id", component: AdminRequirement },
         { path: "/admin/formations", component: AdminRequirements },
+        { path: "/admin/projet/nouveau", component: AdminProjectNew },
+        { path: "/admin/projets", component: AdminProjects },
         { path: "/admin/users", component: AdminUsers },
         { path: "/agents", component: Agents },
         { path: "/connexion", component: Login },
+        { path: "/inscription", component: Registration },
         { path: "/projets", component: Projects },
+        { path: "/admin/formation/:id", component: AdminRequirement },
+        { path: "/admin/projet/:id", component: AdminProject },
         { path: "/admin/projet/:id", component: AdminProject },
         { path: "/profil/:id", component: Profil },
         { path: "/projet/:id", component: Project },
@@ -46,13 +48,24 @@ router.beforeEach(function(to, from, next) {
         behavior: "smooth"
     });
 
-    if (to.path !== "/connexion" && !store.state.token) {
+    if (!["/connexion", "/inscription"].includes(to.path) && !store.state.token) {
         M.toast({
             html: "Merci de vous connecter",
             classes: "red"
         });
 
         next("/connexion");
+
+        return;
+    }
+
+    if (to.path === "/inscription" && store.state.token) {
+        M.toast({
+            html: "Déjà connecté",
+            classes: "orange"
+        });
+
+        router.push("/");
 
         return;
     }
