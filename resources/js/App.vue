@@ -33,8 +33,12 @@
                 <a href="" @click.prevent="logout" class="black-text sidenav-close">Déconnexion</a>
             </li>
 
-            <li v-else>
+            <li v-if="!isLogged">
                 <router-link to="/connexion" class="black-text sidenav-close">Connexion</router-link>
+            </li>
+
+            <li v-if="!isLogged">
+                <router-link to="/inscription" class="black-text sidenav-close">Inscription</router-link>
             </li>
         </ul>
 
@@ -79,8 +83,12 @@
                             <a href="" @click.prevent="logout" class="black-text">Déconnexion</a>
                         </li>
 
-                        <li v-else>
+                        <li v-if="!isLogged">
                             <router-link to="/connexion" class="black-text">Connexion</router-link>
+                        </li>
+
+                        <li v-if="!isLogged">
+                            <router-link to="/inscription" class="black-text">Inscription</router-link>
                         </li>
                     </ul>
                 </nav>
