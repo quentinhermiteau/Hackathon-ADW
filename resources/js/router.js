@@ -40,6 +40,12 @@ const router = new VueRouter({
 });
 
 router.beforeEach(function(to, from, next) {
+    window.scroll({
+        top: 0,
+        left: 0,
+        behavior: "smooth"
+    });
+
     if (to.path !== "/connexion" && !store.state.token) {
         M.toast({
             html: "Merci de vous connecter",
