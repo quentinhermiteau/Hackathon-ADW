@@ -56,7 +56,7 @@ class ProjectController extends Controller
     {
         $project->update($request->input());
 
-        return response()->json("Created", 204);
+        return response()->json("Updated", 204);
     }
 
     /**
