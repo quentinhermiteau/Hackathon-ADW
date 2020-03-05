@@ -16,13 +16,13 @@ class Review extends Model
         'agent_id'
     ];
 
-    public function reviewer(): User
+    public function reviewer()
     {
-        return $this->hasOne('App\User', 'reviewer_id');
+        return $this->belongsTo('App\User', 'reviewer_id');
     }
 
-    public function agent(): User
+    public function agent()
     {
-        return $this->hasOne('App\User', 'agent_id');
+        return $this->belongsTo('App\User', 'agent_id');
     }
 }

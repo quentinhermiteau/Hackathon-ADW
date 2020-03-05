@@ -7,7 +7,7 @@ Vue.use(VueX);
 export default new Store({
     state: {
         token: window.localStorage.getItem("token"),
-        role: window.localStorage.getItem("role")
+        user: JSON.parse(window.localStorage.getItem("user"))
     },
     mutations: {
         SET_TOKEN(state, token) {
@@ -19,13 +19,13 @@ export default new Store({
                 window.localStorage.setItem("token", token);
             }
         },
-        SET_ROLE(state, role) {
-            state.role = role;
+        SET_USER(state, user) {
+            state.user = user;
 
-            if (!role) {
-                window.localStorage.removeItem("role");
+            if (!user) {
+                window.localStorage.removeItem("user");
             } else {
-                window.localStorage.setItem("role", role);
+                window.localStorage.setItem("user", JSON.stringify(user));
             }
         }
     },
@@ -33,12 +33,10 @@ export default new Store({
         setToken(context, token) {
             context.commit("SET_TOKEN", token);
         },
-        setRole(context, role) {
-            context.commit("SET_ROLE", role);
+        setUser(context, user) {
+            context.commit("SET_USER", user);
         },
         axiosErrorHandler(context, error) {
-            console.log(error);
-
             if (error.response.status === 403) {
                 M.toast({
                     html: "Vous n'avez pas les autorisations nécessaires pour effectuer cette action",
@@ -91,8 +89,8 @@ export default new Store({
         getToken(state) {
             return state.token;
         },
-        getRole(state) {
-            return state.role;
+        getUser(state) {
+            return state.user;
         }
     }
 });

@@ -4,7 +4,7 @@
             <h1>Gestion des formations <router-link to="/admin/formation/nouveau"><button class="btn waves-effect waves-light green">nouveau</button></router-link></h1>
         </div>
         
-        <table class="striped centered">
+        <table class="highlight striped centered">
             <thead>
                 <th>
                     <div class="input-field">

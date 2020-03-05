@@ -28,9 +28,7 @@ class UserUpdateRequest extends FormRequest
             'firstname' => 'required|string',
             'lastname' => 'required|string',
             'email' => 'required|string|email',
-            'birthday' => 'required|date',
-            'role' => 'required|string|in:ADMIN,AGENT',
-            'status' => 'required|string|in:ENABLED,DISABLED'
+            'birthday' => 'required|date'
         ];
     }
 }

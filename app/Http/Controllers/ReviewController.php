@@ -16,9 +16,9 @@ class ReviewController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function index()
+    public function index(Request $request)
     {
-        return response()->json("TODO: ReviewController@index", 200);
+        return response()->json(Review::with(['reviewer', 'agent'])->where(['agent_id' => $request->USER_ID])->get(), 200);
     }
 
     /**

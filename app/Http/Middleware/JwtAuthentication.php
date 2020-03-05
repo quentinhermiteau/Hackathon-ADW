@@ -57,12 +57,13 @@ class JwtAuthentication
         }
 
         try {
-            $userRole = User::findOrFail($decoded->data->id)->role;
+            $user = User::findOrFail($decoded->data->id);
         } catch (Exception $exception) {
             return response()->json("User not found", 404);
         }
 
-        $request->merge(["USER_ROLE" => $userRole]);
+        $request->merge(["USER_ROLE" => $user->role]);
+        $request->merge(["USER_ID" => $user->id]);
 
         return $next($request);
     }

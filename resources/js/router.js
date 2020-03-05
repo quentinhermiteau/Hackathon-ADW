@@ -37,7 +37,7 @@ const router = new VueRouter({
         { path: "/admin/formation/:id", component: AdminRequirement },
         { path: "/admin/projet/:id", component: AdminProject },
         { path: "/admin/projet/:id", component: AdminProject },
-        { path: "/profil/:id", component: Profil },
+        { path: "/profil", component: Profil },
         { path: "/projet/:id", component: Project },
         { path: "*", component: PageNotFound }
     ]

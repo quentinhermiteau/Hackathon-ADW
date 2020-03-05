@@ -119,15 +119,15 @@ export default {
     methods: {
         ...mapGetters([
             "getToken",
-            "getRole"
+            "getUser"
         ]),
         ...mapActions([
             "setToken",
-            "setRole"
+            "setUser"
         ]),
         logout() {
             this.setToken(null); 
-            this.setRole(null);
+            this.setUser(null);
             this.$router.push("/connexion");
 
             M.toast({
@@ -141,7 +141,8 @@ export default {
             return !!this.getToken();
         },
         isAdmin() {
-            return this.getRole() === "ADMIN";
+            const user = this.getUser();
+            return user.role === "ADMIN";
         }
     },
     mounted() {

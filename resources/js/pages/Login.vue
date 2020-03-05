@@ -47,7 +47,7 @@ export default {
         ...mapActions([
             "setToken",
             "axiosErrorHandler",
-            "setRole"
+            "setUser"
         ]),
         login() {
             axios.post("/api/v1/login", {
@@ -55,7 +55,7 @@ export default {
                 password: this.user.password
             }).then(response => {
                 this.setToken(response.data.token);
-                this.setRole(response.data.role);
+                this.setUser(response.data.user);
 
                 M.toast({
                     html: "Connexion réussie",

@@ -28,7 +28,7 @@ export default {
                 "Authorization": `Bearer ${this.getToken()}`
             }
         }).then(response => {
-            // console.log(response);
+            
         }).catch(this.axiosErrorHandler);
     }
 };

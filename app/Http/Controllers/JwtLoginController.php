@@ -51,7 +51,7 @@ class JwtLoginController extends Controller
         }
 
         return response()->json([
-            "role" => $foundUser->role,
+            "user" => $foundUser,
             "token" => Crypt::encryptString(JWT::encode($payload, $key))
         ], 200);
     }
