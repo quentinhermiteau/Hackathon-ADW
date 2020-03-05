@@ -2,47 +2,55 @@
     <div>
         <ul class="sidenav" id="menu">
             <li v-if="isLogged"> 
-                <router-link to="/profil" class="black-text">Profil</router-link>
+                <router-link to="/" class="black-text sidenav-close">Accueil</router-link>
+            </li> 
+
+            <li v-if="isLogged"> 
+                <router-link to="/profil" class="black-text sidenav-close">Profil</router-link>
             </li> 
 
             <!-- non-admin -->
             <li v-if="isLogged && !isAdmin"> 
-                <router-link to="/agents" class="black-text">Agents</router-link>
+                <router-link to="/agents" class="black-text sidenav-close">Agents</router-link>
             </li> 
 
             <!-- admin -->
             <li v-if="isLogged && isAdmin"> 
-                <router-link to="/admin/agents" class="black-text">Agents</router-link>
+                <router-link to="/admin/agents" class="black-text sidenav-close">Agents</router-link>
             </li> 
 
             <!-- non-admin -->
             <li v-if="isLogged && !isAdmin"> 
-                <router-link to="/projets" class="black-text">Projets</router-link>
+                <router-link to="/projets" class="black-text sidenav-close">Projets</router-link>
             </li> 
 
             <!-- admin -->
             <li v-if="isLogged && isAdmin"> 
-                <router-link to="/admin/projets" class="black-text">Projets</router-link>
+                <router-link to="/admin/projets" class="black-text sidenav-close">Projets</router-link>
             </li> 
 
             <li v-if="isLogged">
-                <a href="" @click.prevent="logout" class="black-text">Déconnexion</a>
+                <a href="" @click.prevent="logout" class="black-text sidenav-close">Déconnexion</a>
             </li>
 
             <li v-else>
-                <router-link to="/connexion" class="black-text">Connexion</router-link>
+                <router-link to="/connexion" class="black-text sidenav-close">Connexion</router-link>
             </li>
         </ul>
 
         <header>
-            <div class="fixed-navbar">
-                <nav class="transparent">
-                    <a href="" class="brand-logo red-text">ADW</a>
+            <div class="navbar-fixed">
+                <nav class="white">
+                    <router-link to="/" class="brand-logo red-text">ADW</router-link>
                     <a href="" @click.prevent class="sidenav-trigger right" data-target="menu">
                         <i class="material-icons black-text">menu</i>
                     </a>
                     
                     <ul class="right hide-on-med-and-down">
+                        <li v-if="isLogged"> 
+                            <router-link to="/" class="black-text">Accueil</router-link>
+                        </li> 
+
                         <li v-if="isLogged"> 
                             <router-link to="/profil" class="black-text">Profil</router-link>
                         </li> 
