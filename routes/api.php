@@ -22,7 +22,8 @@ Route::prefix('v1')->group(function () {
             'projects' => 'ProjectController',
             'reviews' => 'ReviewController',
             'skills' => 'SkillController',
-            'specializations' => 'SpecializationController'
+            'specializations' => 'SpecializationController',
+            'requirements' => 'RequirementController',
         ]);
     });
 });

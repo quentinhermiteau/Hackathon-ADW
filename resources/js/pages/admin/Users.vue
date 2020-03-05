@@ -109,7 +109,7 @@ export default {
         ...mapGetters(['getToken']),
         ...mapActions(['axiosErrorHandler']),
         getUsers() {
-            axios({method: 'GET', url: '/api/v1/users', headers: {'Authorization': `Bearer ${this.getToken()}`}})
+            axios({method: 'GET', url: '/api/v1/users', headers: {Authorization: `Bearer ${this.getToken()}`}})
             .then(response => {
                 this.users = response.data;
             }).catch(this.axiosErrorHandler)
@@ -118,13 +118,13 @@ export default {
             this.$router.push(`/profil/${user.id}`);
         },
         updateUser(user) {
-            axios({method: 'PUT', url: `/api/v1/users/${user.id}`, data: user, headers: {'Authorization': `Bearer ${this.getToken()}`}})
+            axios({method: 'PUT', url: `/api/v1/users/${user.id}`, data: user, headers: {Authorization: `Bearer ${this.getToken()}`}})
             .then(response => {
                 M.toast({html: 'Utilisateur modifié avec succès.', classes: 'green'});
             }).catch(this.axiosErrorHandler)
         },
         deleteUser(user) {
-            axios({method: 'DELETE', url: `/api/v1/users/${user.id}`, data: user, headers: {'Authorization': `Bearer ${this.getToken()}`}})
+            axios({method: 'DELETE', url: `/api/v1/users/${user.id}`, data: user, headers: {Authorization: `Bearer ${this.getToken()}`}})
             .then(response => {
                 M.toast({html: 'Utilisateur supprimé avec succès.', classes: 'green'});
                 this.getUsers();

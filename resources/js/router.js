@@ -1,6 +1,7 @@
 import AdminProject from "./pages/admin/Project.vue";
 import AdminProjectNew from "./pages/admin/ProjectNew.vue";
 import AdminProjects from "./pages/admin/Projects.vue";
+import AdminRequirements from "./pages/admin/Requirements.vue";
 import AdminUsers from "./pages/admin/Users.vue";
 import Agents from "./pages/Agents.vue";
 import Home from "./pages/Home.vue";
@@ -23,6 +24,7 @@ const router = new VueRouter({
         { path: "/admin/projet/:id", component: AdminProject },
         { path: "/admin/projet/nouveau", component: AdminProjectNew },
         { path: "/admin/projets", component: AdminProjects },
+        { path: "/admin/requirements", component: AdminRequirements },
         { path: "/admin/users", component: AdminUsers },
         { path: "/agents", component: Agents },
         { path: "/connexion", component: Login },

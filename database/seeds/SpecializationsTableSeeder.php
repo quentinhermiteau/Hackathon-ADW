@@ -12,8 +12,18 @@ class SpecializationsTableSeeder extends Seeder
      */
     public function run()
     {
-        Specialization::create([
-            'name' => 'Développeur web'
-        ]);
+        $specializations = [
+            ['name' => 'Conseil', 'description' => 'Accompagnement & pilotage, audit...'],
+            ['name' => 'Créatif', 'description' => 'Tous supports'],
+            ['name' => 'Content', 'description' => 'Storytelling & brand'],
+            ['name' => 'Digital', 'description' => 'Web & app'],
+            ['name' => 'Acquisition', 'description' => 'Notoriété, seo, sea, sem, social'],
+            ['name' => 'Event', 'description' => 'Concept, message, réalisation'],
+        ];
+
+        foreach ($specializations as $specialization) {
+            Specialization::create($specialization);
+        }
+
     }
 }
