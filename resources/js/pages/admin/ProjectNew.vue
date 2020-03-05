@@ -24,6 +24,14 @@
                 </div>
 
                 <div class="col s12 input-field">
+                    <label for="specialization_id" class="active">Spécialisation</label>
+                    <select class="browser-default" id="specialization_id" v-model="project.specialization_id">
+                        <option value=0> -- Choisissez une spécialisation -- </option>
+                        <option :value="specialization.id" v-bind:key="specialization.id" v-for="specialization in specializations">{{specialization.name}}</option>
+                    </select>
+                </div>
+
+                <div class="col s12 input-field">
                     <label for="status" class="active">Statut</label>
                     <select class="browser-default" id="status" v-model="project.status">
                         <option value=""> -- Choisissez un statut -- </option>
@@ -108,9 +116,11 @@ export default {
                 budget_min: "",
                 budget_max: "",
                 agent_id: 0,
-                referent_id: 0
+                referent_id: 0,
+                specialization_id: 0
             },
-            users: []
+            users: [],
+            specializations: []
         };
     },
     methods: {
@@ -126,6 +136,7 @@ export default {
                     "Authorization": `Bearer ${this.getToken()}`
                 }
             }).then(response => {
+                this.$router.push('/admin/projets');
                 M.toast({
                     html: "Projet créé avec succès",
                     classes: "green"
@@ -140,6 +151,14 @@ export default {
             }
         }).then(response => {
             this.users = response.data;
+        }).catch(this.axiosErrorHandler);
+
+        axios.get("/api/v1/specializations", {
+            headers: {
+                "Authorization": `Bearer ${this.getToken()}`
+            }
+        }).then(response => {
+            this.specializations = response.data;
         }).catch(this.axiosErrorHandler);
     }
 };
