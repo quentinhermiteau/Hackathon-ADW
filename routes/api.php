@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 Route::prefix('v1')->group(function () {
     Route::post("login", "JwtLoginController@login");
     Route::post("registration", "RegistrationController");
+    Route::put("users/{user}/requirements/{requirement}", "RequirementUserController");
 
     Route::group(['middleware' => ['jwt']], function () {
         Route::resources([

@@ -19,6 +19,7 @@ class CreateRequirementUsersTable extends Migration
             $table->foreign('requirement_id')->references('id')->on('requirements')->onDelete('cascade');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }

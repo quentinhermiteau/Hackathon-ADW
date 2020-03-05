@@ -25,7 +25,8 @@ class User extends Authenticatable
         'birthday',
         'description',
         'role',
-        'status'
+        'status',
+        'specialization_id'
     ];
 
     /**
@@ -51,13 +52,18 @@ class User extends Authenticatable
         return "{$this->firstName} {$this->lastname}";
     }
 
-    public function specializations()
+    public function specialization()
     {
-        return $this->belongsToMany('App\Specialization', 'specialization_users', 'agent_id');
+        return $this->belongsTo('App\Specialization');
     }
 
     public function projects()
     {
         return $this->hasMany('App\Project', 'agent_id');
+    }
+
+    public function requirements()
+    {
+        return $this->belongsToMany('App\Requirement', 'requirement_users');
     }
 }

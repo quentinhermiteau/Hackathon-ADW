@@ -5,29 +5,34 @@
                 <router-link to="/" class="black-text sidenav-close">Accueil</router-link>
             </li> 
 
-            <li v-if="isLogged"> 
+            <li v-if="isLogged && !isLearner"> 
                 <router-link to="/profil" class="black-text sidenav-close">Profil</router-link>
             </li> 
 
             <!-- non-admin -->
-            <li v-if="isLogged && !isAdmin"> 
+            <li v-if="isLogged && !isAdmin && !isLearner"> 
                 <router-link to="/agents" class="black-text sidenav-close">Agents</router-link>
             </li> 
 
             <!-- admin -->
-            <li v-if="isLogged && isAdmin"> 
+            <li v-if="isLogged && isAdmin && !isLearner"> 
                 <router-link to="/admin/agents" class="black-text sidenav-close">Agents</router-link>
             </li> 
 
             <!-- non-admin -->
-            <li v-if="isLogged && !isAdmin"> 
+            <li v-if="isLogged && !isAdmin && !isLearner"> 
                 <router-link to="/projets" class="black-text sidenav-close">Projets</router-link>
             </li> 
 
             <!-- admin -->
-            <li v-if="isLogged && isAdmin"> 
+            <li v-if="isLogged && isAdmin && !isLearner"> 
                 <router-link to="/admin/projets" class="black-text sidenav-close">Projets</router-link>
-            </li> 
+            </li>
+
+            <!-- learner -->
+            <li v-if="isLogged && isLearner"> 
+                <router-link to="/formations" class="black-text sidenav-close">Formations</router-link>
+            </li>
 
             <li v-if="isLogged">
                 <a href="" @click.prevent="logout" class="black-text sidenav-close">Déconnexion</a>
@@ -60,7 +65,7 @@
                         </li> 
 
                         <!-- non-admin -->
-                        <li v-if="isLogged && !isAdmin"> 
+                        <li v-if="isLogged && !isAdmin && !isLearner"> 
                             <router-link to="/agents" class="black-text">Agents</router-link>
                         </li> 
 
@@ -70,7 +75,7 @@
                         </li> 
 
                         <!-- non-admin -->
-                        <li v-if="isLogged && !isAdmin"> 
+                        <li v-if="isLogged && !isAdmin && !isLearner"> 
                             <router-link to="/projets" class="black-text">Projets</router-link>
                         </li>
 
@@ -78,6 +83,11 @@
                         <li v-if="isLogged && isAdmin"> 
                             <router-link to="/admin/projets" class="black-text">Projets</router-link>
                         </li> 
+
+                        <!-- learner -->
+                        <li v-if="isLogged && isLearner"> 
+                            <router-link to="/formations" class="black-text sidenav-close">Formations</router-link>
+                        </li>
 
                         <li v-if="isLogged">
                             <a href="" @click.prevent="logout" class="black-text">Déconnexion</a>
@@ -143,6 +153,10 @@ export default {
         isAdmin() {
             const user = this.getUser();
             return user.role === "ADMIN";
+        },
+        isLearner() {
+            const user = this.getUser();
+            return user.role === "LEARNER";
         }
     },
     mounted() {

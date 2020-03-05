@@ -24,6 +24,8 @@ class CreateUsersTable extends Migration
             $table->string('description')->nullable();
             $table->enum('role', ['ADMIN', 'AGENT', 'LEARNER']);
             $table->enum('status', ['ENABLED', 'DISABLED'])->default('ENABLED');
+            $table->unsignedBigInteger('specialization_id');
+            $table->foreign('specialization_id')->references('id')->on('specializations');
             $table->rememberToken();
             $table->timestamps();
         });
