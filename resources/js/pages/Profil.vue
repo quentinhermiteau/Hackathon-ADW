@@ -90,7 +90,7 @@ export default {
     },
     methods: {
         ...mapGetters(['getUser', 'getToken']),
-        ...mapActions(['setUser']),
+        ...mapActions(['setUser', 'axiosErrorHandler']),
         update() {
             axios({
                 method: "PUT",
