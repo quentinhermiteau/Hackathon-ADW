@@ -50,7 +50,10 @@
         <header>
             <div class="navbar-fixed">
                 <nav class="white">
-                    <router-link to="/" class="brand-logo red-text">ADW</router-link>
+                    <router-link to="/" class="brand-logo red-text">
+                        <img src="../images/logo.svg" class="logo">
+                    </router-link>
+
                     <a href="" @click.prevent class="sidenav-trigger right" data-target="menu">
                         <i class="material-icons black-text">menu</i>
                     </a>
@@ -188,5 +191,10 @@ export default {
 
 .fade-enter, .fade-leave-to {
     opacity: 0;
+}
+
+.logo {
+    height: 64px;
+    width: 64px;
 }
 </style>
