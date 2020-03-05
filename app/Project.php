@@ -19,7 +19,6 @@ class Project extends Model
         'contact_phone_number',
         'budget_min',
         'budget_max',
-        'user_id',
         'referent_id'
     ];
 
