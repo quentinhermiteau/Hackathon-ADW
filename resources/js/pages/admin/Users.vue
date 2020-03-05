@@ -4,7 +4,7 @@
             <h1>Gestion utilisateurs</h1>
         </div>
         
-        <table class="striped centered">
+        <table class="striped centered responsive-table">
             <thead>
                 <th>
                     <div class="input-field">
