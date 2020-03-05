@@ -18,7 +18,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        return response()->json(Project::with(["referent"])->get(), 200);
+        return response()->json(Project::with(["agent", "referent"])->get(), 200);
     }
 
     /**

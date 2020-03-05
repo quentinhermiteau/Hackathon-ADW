@@ -55,4 +55,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Specialization', 'specialization_users', 'agent_id');
     }
+
+    public function projects()
+    {
+        return $this->hasMany('App\Project', 'agent_id');
+    }
 }

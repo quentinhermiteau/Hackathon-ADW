@@ -19,12 +19,18 @@ class Project extends Model
         'contact_phone_number',
         'budget_min',
         'budget_max',
+        'agent_id',
         'referent_id'
     ];
 
     public function specializations()
     {
         return $this->belongsToMany('App\Specialization');
+    }
+
+    public function agent()
+    {
+        return $this->belongsTo('App\User', 'agent_id');
     }
 
     public function referent()

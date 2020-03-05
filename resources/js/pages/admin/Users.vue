@@ -61,7 +61,7 @@
                     <td class="actions">
                         <i class="material-icons tooltipped green-text cursors" data-position="bottom" data-tooltip="Visualiser" v-on:click="showUser(user)">remove_red_eye</i>
                         <i class="material-icons tooltipped orange-text cursors" data-position="bottom" data-tooltip="Modifier" v-on:click="updateUser(user)">edit</i>
-                        <i class="material-icons tooltipped red-text cursors" data-position="bottom" data-tooltip="Supprimer" v-on:click="deleteUser(user)">delete</i>
+                        <i class="material-icons tooltipped red-text cursors" data-position="bottom" data-tooltip="Supprimer" v-on:click="deleteUser(user)">delete_forever</i>
                     </td>
                 </tr>
             </tbody>
