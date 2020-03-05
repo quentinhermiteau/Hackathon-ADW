@@ -21,7 +21,6 @@ Vue.use(VueRouter);
 const router = new VueRouter({
     mode: "history",
     routes: [
-        { path: "*", component: PageNotFound },
         { path: "/", component: Home },
         { path: "/admin/projet/nouveau", component: AdminProjectNew },
         { path: "/admin/projet/:id", component: AdminProject },
@@ -32,9 +31,11 @@ const router = new VueRouter({
         { path: "/admin/users", component: AdminUsers },
         { path: "/agents", component: Agents },
         { path: "/connexion", component: Login },
+        { path: "/projets", component: Projects },
+        { path: "/admin/projet/:id", component: AdminProject },
         { path: "/profil/:id", component: Profil },
         { path: "/projet/:id", component: Project },
-        { path: "/projets", component: Projects }
+        { path: "*", component: PageNotFound }
     ]
 });
 

@@ -5,12 +5,24 @@
                 <router-link to="/profil" class="black-text">Profil</router-link>
             </li> 
 
-            <li v-if="isLogged"> 
+            <!-- non-admin -->
+            <li v-if="isLogged && !isAdmin"> 
                 <router-link to="/agents" class="black-text">Agents</router-link>
             </li> 
 
-            <li v-if="isLogged"> 
+            <!-- admin -->
+            <li v-if="isLogged && isAdmin"> 
+                <router-link to="/admin/agents" class="black-text">Agents</router-link>
+            </li> 
+
+            <!-- non-admin -->
+            <li v-if="isLogged && !isAdmin"> 
                 <router-link to="/projets" class="black-text">Projets</router-link>
+            </li> 
+
+            <!-- admin -->
+            <li v-if="isLogged && isAdmin"> 
+                <router-link to="/admin/projets" class="black-text">Projets</router-link>
             </li> 
 
             <li v-if="isLogged">
@@ -35,13 +47,25 @@
                             <router-link to="/profil" class="black-text">Profil</router-link>
                         </li> 
 
-                        <li v-if="isLogged"> 
+                        <!-- non-admin -->
+                        <li v-if="isLogged && !isAdmin"> 
                             <router-link to="/agents" class="black-text">Agents</router-link>
                         </li> 
 
-                        <li v-if="isLogged"> 
+                        <!-- admin -->
+                        <li v-if="isLogged && isAdmin"> 
+                            <router-link to="/admin/agents" class="black-text">Agents</router-link>
+                        </li> 
+
+                        <!-- non-admin -->
+                        <li v-if="isLogged && !isAdmin"> 
                             <router-link to="/projets" class="black-text">Projets</router-link>
                         </li>
+
+                        <!-- admin -->
+                        <li v-if="isLogged && isAdmin"> 
+                            <router-link to="/admin/projets" class="black-text">Projets</router-link>
+                        </li> 
 
                         <li v-if="isLogged">
                             <a href="" @click.prevent="logout" class="black-text">Déconnexion</a>
@@ -55,7 +79,9 @@
             </div>
         </header>
         <main>
-            <router-view></router-view>
+            <transition name="fade" mode="out-in" appear>
+                <router-view></router-view>
+            </transition>
         </main>
     </div>
 </template>
@@ -76,19 +102,30 @@ export default {
     },
     methods: {
         ...mapGetters([
-            "getToken"
+            "getToken",
+            "getRole"
         ]),
         ...mapActions([
-            "setToken"
+            "setToken",
+            "setRole"
         ]),
         logout() {
             this.setToken(null); 
+            this.setRole(null);
             this.$router.push("/connexion");
+
+            M.toast({
+                html: "Déconnexion réussie",
+                classes: "green"
+            });
         }
     },
     computed: {
         isLogged() {
             return !!this.getToken();
+        },
+        isAdmin() {
+            return this.getRole() === "ADMIN";
         }
     },
     mounted() {
@@ -106,11 +143,19 @@ export default {
 </script>
 
 <style>
-    .actions {
-        white-space: nowrap;
-    }
+.actions {
+    white-space: nowrap;
+}
 
-    .cursors {
-        cursor: pointer;
-    }
+.cursors {
+    cursor: pointer;
+}
+
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+}
+
+.fade-enter, .fade-leave-to {
+    opacity: 0;
+}
 </style>

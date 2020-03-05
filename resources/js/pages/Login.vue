@@ -46,14 +46,16 @@ export default {
     methods: {
         ...mapActions([
             "setToken",
-            "axiosErrorHandler"
+            "axiosErrorHandler",
+            "setRole"
         ]),
         login() {
             axios.post("/api/v1/login", {
                 email: this.user.email,
                 password: this.user.password
             }).then(response => {
-                this.setToken(response.data);
+                this.setToken(response.data.token);
+                this.setRole(response.data.role);
 
                 M.toast({
                     html: "Connexion réussie",
