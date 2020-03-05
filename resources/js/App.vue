@@ -1,7 +1,7 @@
 <template>
     <div>
         <ul class="sidenav" id="menu">
-            <li v-if="isLogged"> 
+            <li v-if="!isLogged"> 
                 <router-link to="/" class="black-text sidenav-close">Accueil</router-link>
             </li> 
 
@@ -59,7 +59,7 @@
                     </a>
                     
                     <ul class="right hide-on-med-and-down">
-                        <li v-if="isLogged"> 
+                        <li v-if="!isLogged"> 
                             <router-link to="/" class="black-text">Accueil</router-link>
                         </li> 
 
