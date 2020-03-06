@@ -54,6 +54,8 @@ export default {
                 email: this.user.email,
                 password: this.user.password
             }).then(response => {
+                console.log(response.data.user);
+
                 this.setToken(response.data.token);
                 this.setUser(response.data.user);
 

@@ -71,7 +71,10 @@
 
         <div class="row">
             <div class="col s12 center">
-                <button class="btn waves-effect waves-light green">se positionner</button>
+                <button @click="positioned" class="btn waves-effect waves-light" :class="{green: !hasProjects, red: hasProjects }">
+                    <span v-if="!hasProjects">se positionner</span>
+                    <span v-else>se retirer</span>
+                </button>
             </div>
         </div>
     </div>
@@ -102,9 +105,11 @@ export default {
     },
     methods: {
         ...mapGetters([
-            "getToken"
+            "getToken",
+            "getUser"
         ]),
         ...mapActions([
+            "setUser",
             "axiosErrorHandler"
         ]),
         referent(id) {
@@ -115,6 +120,38 @@ export default {
             }
 
             return `${foundUser.firstname} ${foundUser.lastname}`;
+        },
+        positioned() {
+            const user = this.getUser();
+
+            axios.post("/api/v1/project-user", {
+                user_id: user.id,
+                project_id: this.$route.params.id
+            }, {
+                headers: {
+                    Authorization: `Bearer ${this.getToken()}`
+                },
+            }).then(response => {
+                M.toast({
+                    html: "Mis à jour",
+                    classes: "green"
+                });
+
+                axios.get(`/api/v1/users/${user.id}`, {
+                    headers: {
+                        Authorization: `Bearer ${this.getToken()}`
+                    }
+                }).then(response => {
+                    this.setUser(response.data);           
+                }).catch(this.axiosErrorHandler);
+            }).catch(this.axiosErrorHandler);
+        },
+    },
+    computed: {
+        hasProjects() {
+            const user = this.getUser();
+
+            return "projects" in user && user.projects.length !== 0;
         }
     },
     filters: {
